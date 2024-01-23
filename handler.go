@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -25,9 +26,11 @@ func testHandler(w http.ResponseWriter, r *http.Request) {
 	var err error
 
 	if check == "url" {
+		log.Println("testing URL: " + url)
 		err = HttpTest(url)
 	}
 	if check == "icmp" {
+		log.Println("testing ICMP: " + url)
 		err = IcmpTest(url)
 	}
 	if err != nil {
